@@ -41,4 +41,9 @@ class CityRepository {
     fun updateCity(oldCity: City, updatedCity: City) {
         citiesRef.document(oldCity.name).set(updatedCity)
     }
+
+    fun delCity(city: City?){
+        val toDelete: String = city?.name.toString()
+        citiesRef.document(toDelete).delete()
+    }
 }

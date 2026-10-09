@@ -32,7 +32,8 @@ fun CityListScreen(
     cities: List<City>,
     onAddCity: (City) -> Unit,
     onUpdateCity: (City, City) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onDeleteCity: (City?)-> Unit
 ) {
     var newCityName by remember { mutableStateOf("") }
     var newProvinceName by remember { mutableStateOf("") }
@@ -153,6 +154,14 @@ fun CityListScreen(
                 ) {
                     Text("UPDATE CITY")
                 }
+
+                Button(
+                    modifier = Modifier.padding(vertical = 12.dp),
+                    onClick = {
+                        onDeleteCity(selectedCity)
+                        selectedCity = null
+                    }
+                ) { }
             }
         }
         LazyColumn(modifier = Modifier.fillMaxSize()) {
@@ -213,7 +222,8 @@ fun CityListScreenPreview() {
                 City("Calgary", "AB")
             ),
             onAddCity = {},
-            onUpdateCity = { _, _ -> }
+            onUpdateCity = { _, _ -> },
+            onDeleteCity = {}
         )
     }
 }
