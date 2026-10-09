@@ -161,7 +161,7 @@ fun CityListScreen(
                         onDeleteCity(selectedCity)
                         selectedCity = null
                     }
-                ) { }
+                ) { Text("Delete")}
             }
         }
         LazyColumn(modifier = Modifier.fillMaxSize()) {
